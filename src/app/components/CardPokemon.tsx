@@ -54,7 +54,7 @@ export default function CardPokemon({
 
 	return (
 		<div
-			className={`relative bg-transparent w-full flex flex-col gap-2 rounded-lg`}
+			className={`relative bg-transparent w-full flex flex-col gap-2 rounded-lg group`}
 		>
 			{alreadyCaptured && (
 				<MdCatchingPokemon
@@ -65,7 +65,7 @@ export default function CardPokemon({
 			<img
 				src={pokemonSprite}
 				alt={`Sprite of ${pokemonName}`}
-				className="w-52 mx-auto md:w-full hover:scale-150 duration-500"
+				className="w-52 mx-auto md:w-full opacity-50 group-hover:opacity-100 group-hover:scale-110 duration-700"
 			/>
 			<main className="p-2 text-black  bg-gradient-to-t from-white rounded-xl">
 				<h2 className="font-bold text-xl text-center text-white">

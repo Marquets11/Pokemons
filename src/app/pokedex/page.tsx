@@ -12,7 +12,7 @@ export default function Pokedex() {
 		<>
 			<Link href={"/"}>
 				<IoIosArrowBack
-					className="fixed top-1/2 -left-2 w-10 opacity-100 z-10 hover:text-white hover:translate-x-5 hover:scale-150 duration-500"
+					className="fixed top-1/2 -left-2 w-10 z-10 hover:text-white hover:translate-x-5 hover:scale-150 duration-500"
 					size={30}
 				/>
 			</Link>
