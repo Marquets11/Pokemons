@@ -1,10 +1,13 @@
 "use client";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CardPokemon from "./components/CardPokemon";
 import Header from "./components/Header";
 import { RootState } from "@/lib/store";
+import Link from "next/link";
+import { addPokemonToPokedex } from "@/lib/pokedex/slice";
 
 export default function Page() {
+	const dispatch = useDispatch();
 	const pokemon = useSelector(
 		(state: RootState) => state.pokemon
 	)?.currentPokemon;
@@ -22,11 +25,19 @@ export default function Page() {
 							pokemonHeight={pokemon.height}
 							pokemonWeight={pokemon.weight}
 							pokemonStats={pokemon.stats}
+							pokemonId={pokemon.id}
 							key={pokemon.id}
 						/>
 						<nav className="flex justify-between w-full p-5">
-							<button className="btn-options">Save</button>
-							<button className="btn-options">Pokemons</button>
+							<button
+								className="btn-options"
+								onClick={() => dispatch(addPokemonToPokedex(pokemon))}
+							>
+								Capture
+							</button>
+							<button className="btn-options">
+								<Link href={"/pokedex"}>Pokédex</Link>
+							</button>
 						</nav>
 					</>
 				) : (

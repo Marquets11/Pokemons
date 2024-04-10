@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { pokemon } from "./pokemon/slice";
+import { pokedex } from "./pokedex/slice";
 
 export const makeStore = () => {
 	return configureStore({
-		reducer: { pokemon },
+		reducer: { pokemon, pokedex },
 	});
 };
 

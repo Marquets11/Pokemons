@@ -11,11 +11,6 @@ export default function SearchBar() {
 	const dispatch = useDispatch();
 
 	const searchNewPokemon = () => {
-		// if (!pokemonName.current) {
-		// 	alert("Preencher o campo para pesquisar!");
-		// 	return;
-		// }
-
 		searchPokemonViaAPI(pokemonName.current)
 			.then((res) => {
 				dispatch(defineCurrentPokemon(res));

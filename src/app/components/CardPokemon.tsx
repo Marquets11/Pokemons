@@ -7,6 +7,9 @@ import { AiOutlineFire } from "react-icons/ai";
 import { GiWingedShield } from "react-icons/gi";
 import { TbWeight } from "react-icons/tb";
 import { RiRuler2Line } from "react-icons/ri";
+import { MdCatchingPokemon } from "react-icons/md";
+import { useSelector } from "react-redux";
+import { RootState } from "@/lib/store";
 
 export default function CardPokemon({
 	pokemonName,
@@ -15,6 +18,7 @@ export default function CardPokemon({
 	pokemonHeight,
 	pokemonWeight,
 	pokemonStats,
+	pokemonId,
 }: {
 	pokemonName: string;
 	pokemonSprite: string;
@@ -22,6 +26,7 @@ export default function CardPokemon({
 	pokemonHeight: number;
 	pokemonWeight: number;
 	pokemonStats: PokemonStats[];
+	pokemonId: number;
 }) {
 	const typeColor = {
 		electric: "bg-yellow-400 rounded-lg px-5 py-1 text-black font-bold",
@@ -44,15 +49,26 @@ export default function CardPokemon({
 		fairy: "bg-pink-300 rounded-lg px-5 py-1 text-black font-bold",
 	};
 
+	const pokedex = useSelector((state: RootState) => state.pokedex);
+	const alreadyCaptured = pokedex.find(({ id }) => id === pokemonId);
+
 	return (
-		<div className={`bg-transparent w-full flex flex-col gap-2 rounded-lg`}>
+		<div
+			className={`relative bg-transparent w-full flex flex-col gap-2 rounded-lg`}
+		>
+			{alreadyCaptured && (
+				<MdCatchingPokemon
+					className="absolute top-5 right-5 text-red-600"
+					scale={20}
+				/>
+			)}
 			<img
 				src={pokemonSprite}
 				alt={`Sprite of ${pokemonName}`}
 				className="w-52 mx-auto md:w-full hover:scale-150 duration-500"
 			/>
-			<main className="p-2 text-black bg-white rounded-xl">
-				<h2 className="font-bold text-xl text-center">
+			<main className="p-2 text-black  bg-gradient-to-t from-white rounded-xl">
+				<h2 className="font-bold text-xl text-center text-white">
 					{pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1)}
 				</h2>
 				<div className="flex justify-center gap-2">
