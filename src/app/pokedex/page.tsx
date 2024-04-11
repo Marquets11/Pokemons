@@ -19,7 +19,7 @@ export default function Pokedex() {
 			<div
 				className={`min-h-screen bg-stone-800 ${
 					pokedex.length > 0
-						? "grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-2"
+						? "grid sm:pl-10 gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 xl:grid-cols-6 p-2"
 						: "flex items-center justify-center"
 				}`}
 			>
