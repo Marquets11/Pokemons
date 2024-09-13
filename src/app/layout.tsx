@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import StoreProvider from "./StoreProvider";
+import { MainHeader } from "./_components/MainHeader";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,9 +20,14 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html lang="en" className="scrollbar-none">
 			<body className={inter.className}>
-				<StoreProvider>{children}</StoreProvider>
+				<TooltipProvider>
+					<main className="min-h-screen flex flex-col">
+						<MainHeader />
+						<div className="flex-1 bg-gray-900 p-10">{children}</div>
+					</main>
+				</TooltipProvider>
 			</body>
 		</html>
 	);
