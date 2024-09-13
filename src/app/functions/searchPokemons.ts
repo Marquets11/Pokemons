@@ -10,5 +10,5 @@ export async function searchPokemons({ offset = 0 }: searchPokemonsProps) {
 		`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=50`
 	);
 
-	return response.data.results as DataFetched;
+	return { data: response.data as DataFetched };
 }

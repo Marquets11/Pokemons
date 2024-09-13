@@ -9,6 +9,8 @@ import {
 } from "@/components/ui/tooltip";
 import { Ability } from "../_components/Ability";
 import { StatBar } from "../_components/StatBar";
+import { SpritePokemon } from "../_components/SpritePokemon";
+import { NamePokemon } from "../_components/NamePokemon";
 
 export default async function Page({
 	searchParams,
@@ -25,29 +27,18 @@ export default async function Page({
         max-sm:divide-y-2 sm:divide-x-2
         border-2 rounded-sm"
 			>
-				<section className="relative flex min-w-52 p-5 bg-gray-100">
-					<h1
-						className="absolute top-2 left-2 
-						max-w-44 overflow-hidden overflow-ellipsis
-						text-2xl font-bold text-black"
-					>
-						{pokemon.name.charAt(0).toLocaleUpperCase() + pokemon.name.slice(1)}
-					</h1>
+				<section className="relative flex min-w-52 min-h-52 p-5 bg-gray-100">
+					<NamePokemon className="absolute top-2 left-2" name={pokemon.name} />
 
 					<span
-						className="absolute top-2 right-2 
+						className="absolute top-10 left-2 
 						font-mono text-xs"
 					>
 						N°{pokemon.order}
 					</span>
 
-					<Image
-						src={pokemon.sprites.front_default}
-						alt={`${pokemon.name}-sprite`}
-						width={500}
-						height={500}
-						className="w-full m-auto"
-					/>
+					<SpritePokemon pokemon={pokemon} />
+
 					<div className="flex gap-1 absolute bottom-0 left-2">
 						{pokemon.types.map((type) => (
 							<BadgeType
@@ -98,7 +89,7 @@ export default async function Page({
 						<h3 className="text-black -mx-10 bg-gray-100 px-10 py-2 border-y-2">
 							Abilites
 						</h3>
-						<nav className="flex justify-around">
+						<nav className="flex max-sm:flex-wrap gap-2 justify-around">
 							{pokemon.abilities.map((pokemonAbility) => (
 								<Ability
 									key={pokemonAbility.ability.name}

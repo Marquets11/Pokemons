@@ -6,9 +6,15 @@ export type Ability = {
 };
 
 export type DataFetched = {
+	next: null | string;
+	previous: null | string;
+	results: ResultDataFetched[];
+};
+
+type ResultDataFetched = {
 	name: string;
 	url: string;
-}[];
+};
 
 type types =
 	| "electric"
@@ -63,6 +69,7 @@ export interface Pokemon {
 	name: string;
 	sprites: {
 		front_default: string;
+		front_shiny: string;
 	};
 	stats: PokemonStats[];
 	types: PokemonType[];

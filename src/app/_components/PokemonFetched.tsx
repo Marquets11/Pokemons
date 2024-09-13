@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Pokemon } from "@/lib/types";
 import { BadgeType } from "./BadgeType";
+import { NamePokemon } from "./NamePokemon";
 
 interface PokemonFetchedProps {
 	name: string;
@@ -29,27 +30,28 @@ export function PokemonFetched({ name }: PokemonFetchedProps) {
 			<div
 				className="p-5 bg-gray-600 rounded-sm
         relative group/card
-        overflow-hidden
+        overflow-hidden size-full min-h-40
         hover:scale-125 hover:z-10 hover:bg-white hover:shadow-xl  hover:shadow-black
         duration-300"
 			>
-				<Image
-					src={pokemon.sprites.front_default}
-					alt={`${pokemon.name}-sprite`}
-					width={500}
-					height={500}
-					className="drop-shadow-md"
-				/>
+				{pokemon.sprites.front_default && (
+					<Image
+						src={pokemon.sprites.front_default}
+						alt={`${pokemon.name}-sprite`}
+						width={500}
+						height={500}
+						className="drop-shadow-md"
+					/>
+				)}
 
-				<h2
+				<NamePokemon
+					name={pokemon.name}
 					className="text-sm font-extrabold
-          max-w-full overflow-hidden overflow-ellipsis
           absolute top-0 -right-96 z-10
-          group-hover/card:right-2
+					max-w-36
+          group-hover/card:right-1
           duration-500"
-				>
-					{pokemon.name.charAt(0).toLocaleUpperCase() + pokemon.name.slice(1)}
-				</h2>
+				/>
 
 				<div
 					className="flex gap-1

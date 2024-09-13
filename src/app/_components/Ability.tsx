@@ -27,7 +27,9 @@ export async function Ability({ ability }: AbilityProps) {
 					{pokemonAbility.name.replaceAll("-", " ")}
 				</PopoverTrigger>
 				<PopoverContent>
-					{pokemonAbility.effect_entries[1].effect}
+					{pokemonAbility.effect_entries[1]
+						? pokemonAbility.effect_entries[1].effect
+						: pokemonAbility?.effect_entries[0]?.effect}
 				</PopoverContent>
 			</Popover>
 		</>
